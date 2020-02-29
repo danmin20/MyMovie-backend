@@ -1,0 +1,3 @@
+type Query {
+  movieDirNm(name: String!): [MovieList]!
+}
