@@ -1,0 +1,18 @@
+type User {
+  id: ID! @id
+  name: String!
+  email: String! @unique
+  movies: [Movie!]! @relation(name:"MoviesOfPost" onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Movie {
+  id: ID! @id
+  code: String!
+  user: User! @relation(name: "MoviesOfPost")
+  sentiment: String!
+  rate: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}

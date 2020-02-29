@@ -1,0 +1,6 @@
+endpoint: https://mymovie-prisma-bd80014fa4.herokuapp.com/mymovie-backend/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/

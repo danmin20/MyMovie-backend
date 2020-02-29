@@ -1,0 +1,43 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  movies: [Movie!]!
+  createdAt: String
+  updatedAt: String
+}
+
+type Movie {
+  id: ID!
+  code: String!
+  user: User!
+  sentiment: String!
+  rate: Int!
+  createdAt: String
+  updatedAt: String
+}
+
+type MovieList {
+  movieCd: String!
+  movieNm: String
+  movieNmEn: String
+  prdtYear: String
+  openDt: String
+  typeNm: String
+  prdtStarNm: String
+  nationAlt: String
+  genreAlt: String
+  repNationNm: String
+  repGenreNm: String
+  directors: [Director]
+  companys: [Company]
+}
+
+type Director {
+  peopleNm: String
+}
+
+type Company {
+  companyCd: String
+  companyNm: String
+}
