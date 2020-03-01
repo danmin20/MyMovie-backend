@@ -11,6 +11,6 @@ export const resolvers = {
     movieDetail: (_, { code }) => movieDetail(code),
     boxofficeDay: (_, { date }) => boxofficeDay(date),
     boxofficeWeek: (_, { date, week }) => boxofficeWeek(date, week),
-    naverMovie: (_, { term }) => naverMovie(term)
+    naverMovie: (_, { term, start }) => naverMovie(term, start)
   }
 };

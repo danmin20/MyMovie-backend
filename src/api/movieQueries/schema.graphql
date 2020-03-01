@@ -4,5 +4,5 @@ type Query {
   movieDetail(code: String): MovieDetail!
   boxofficeDay(date: String!): [Boxoffice]!
   boxofficeWeek(date: String! week: String): [Boxoffice]!
-  naverMovie(term: String!): [NaverMovie]!
+  naverMovie(term: String! start:Int!): [NaverMovie]!
 }
