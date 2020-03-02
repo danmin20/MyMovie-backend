@@ -3,13 +3,13 @@ type User {
   name: String!
   email: String!
   movies: [Movie!]!
+  loginSecret: String
   createdAt: String
   updatedAt: String
 }
 
 type Movie {
   id: ID!
-  code: String!
   user: User!
   sentiment: String!
   rate: Int!
@@ -122,7 +122,6 @@ type NaverMovie {
   title: String
   link: String
   image: String
-  subtitle: String
   pudDate: String
   director: String
   actor: String

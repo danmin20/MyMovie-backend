@@ -143,8 +143,6 @@ export interface ClientConstructor<T> {
 export type MovieOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "code_ASC"
-  | "code_DESC"
   | "sentiment_ASC"
   | "sentiment_DESC"
   | "rate_ASC"
@@ -161,6 +159,8 @@ export type UserOrderByInput =
   | "name_DESC"
   | "email_ASC"
   | "email_DESC"
+  | "loginSecret_ASC"
+  | "loginSecret_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -187,20 +187,6 @@ export interface MovieWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  code?: Maybe<String>;
-  code_not?: Maybe<String>;
-  code_in?: Maybe<String[] | String>;
-  code_not_in?: Maybe<String[] | String>;
-  code_lt?: Maybe<String>;
-  code_lte?: Maybe<String>;
-  code_gt?: Maybe<String>;
-  code_gte?: Maybe<String>;
-  code_contains?: Maybe<String>;
-  code_not_contains?: Maybe<String>;
-  code_starts_with?: Maybe<String>;
-  code_not_starts_with?: Maybe<String>;
-  code_ends_with?: Maybe<String>;
-  code_not_ends_with?: Maybe<String>;
   user?: Maybe<UserWhereInput>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
@@ -291,6 +277,20 @@ export interface UserWhereInput {
   movies_every?: Maybe<MovieWhereInput>;
   movies_some?: Maybe<MovieWhereInput>;
   movies_none?: Maybe<MovieWhereInput>;
+  loginSecret?: Maybe<String>;
+  loginSecret_not?: Maybe<String>;
+  loginSecret_in?: Maybe<String[] | String>;
+  loginSecret_not_in?: Maybe<String[] | String>;
+  loginSecret_lt?: Maybe<String>;
+  loginSecret_lte?: Maybe<String>;
+  loginSecret_gt?: Maybe<String>;
+  loginSecret_gte?: Maybe<String>;
+  loginSecret_contains?: Maybe<String>;
+  loginSecret_not_contains?: Maybe<String>;
+  loginSecret_starts_with?: Maybe<String>;
+  loginSecret_not_starts_with?: Maybe<String>;
+  loginSecret_ends_with?: Maybe<String>;
+  loginSecret_not_ends_with?: Maybe<String>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -319,7 +319,6 @@ export type UserWhereUniqueInput = AtLeastOne<{
 
 export interface MovieCreateInput {
   id?: Maybe<ID_Input>;
-  code: String;
   user: UserCreateOneWithoutMoviesInput;
   sentiment: String;
   rate: Int;
@@ -334,10 +333,10 @@ export interface UserCreateWithoutMoviesInput {
   id?: Maybe<ID_Input>;
   name: String;
   email: String;
+  loginSecret?: Maybe<String>;
 }
 
 export interface MovieUpdateInput {
-  code?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredWithoutMoviesInput>;
   sentiment?: Maybe<String>;
   rate?: Maybe<Int>;
@@ -353,6 +352,7 @@ export interface UserUpdateOneRequiredWithoutMoviesInput {
 export interface UserUpdateWithoutMoviesDataInput {
   name?: Maybe<String>;
   email?: Maybe<String>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface UserUpsertWithoutMoviesInput {
@@ -361,7 +361,6 @@ export interface UserUpsertWithoutMoviesInput {
 }
 
 export interface MovieUpdateManyMutationInput {
-  code?: Maybe<String>;
   sentiment?: Maybe<String>;
   rate?: Maybe<Int>;
 }
@@ -371,6 +370,7 @@ export interface UserCreateInput {
   name: String;
   email: String;
   movies?: Maybe<MovieCreateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface MovieCreateManyWithoutUserInput {
@@ -380,7 +380,6 @@ export interface MovieCreateManyWithoutUserInput {
 
 export interface MovieCreateWithoutUserInput {
   id?: Maybe<ID_Input>;
-  code: String;
   sentiment: String;
   rate: Int;
 }
@@ -389,6 +388,7 @@ export interface UserUpdateInput {
   name?: Maybe<String>;
   email?: Maybe<String>;
   movies?: Maybe<MovieUpdateManyWithoutUserInput>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface MovieUpdateManyWithoutUserInput {
@@ -417,7 +417,6 @@ export interface MovieUpdateWithWhereUniqueWithoutUserInput {
 }
 
 export interface MovieUpdateWithoutUserDataInput {
-  code?: Maybe<String>;
   sentiment?: Maybe<String>;
   rate?: Maybe<Int>;
 }
@@ -443,20 +442,6 @@ export interface MovieScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  code?: Maybe<String>;
-  code_not?: Maybe<String>;
-  code_in?: Maybe<String[] | String>;
-  code_not_in?: Maybe<String[] | String>;
-  code_lt?: Maybe<String>;
-  code_lte?: Maybe<String>;
-  code_gt?: Maybe<String>;
-  code_gte?: Maybe<String>;
-  code_contains?: Maybe<String>;
-  code_not_contains?: Maybe<String>;
-  code_starts_with?: Maybe<String>;
-  code_not_starts_with?: Maybe<String>;
-  code_ends_with?: Maybe<String>;
-  code_not_ends_with?: Maybe<String>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
   sentiment_in?: Maybe<String[] | String>;
@@ -506,7 +491,6 @@ export interface MovieUpdateManyWithWhereNestedInput {
 }
 
 export interface MovieUpdateManyDataInput {
-  code?: Maybe<String>;
   sentiment?: Maybe<String>;
   rate?: Maybe<Int>;
 }
@@ -514,6 +498,7 @@ export interface MovieUpdateManyDataInput {
 export interface UserUpdateManyMutationInput {
   name?: Maybe<String>;
   email?: Maybe<String>;
+  loginSecret?: Maybe<String>;
 }
 
 export interface MovieSubscriptionWhereInput {
@@ -544,7 +529,6 @@ export interface NodeNode {
 
 export interface Movie {
   id: ID_Output;
-  code: String;
   sentiment: String;
   rate: Int;
   createdAt: DateTimeOutput;
@@ -553,7 +537,6 @@ export interface Movie {
 
 export interface MoviePromise extends Promise<Movie>, Fragmentable {
   id: () => Promise<ID_Output>;
-  code: () => Promise<String>;
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
   rate: () => Promise<Int>;
@@ -565,7 +548,6 @@ export interface MovieSubscription
   extends Promise<AsyncIterator<Movie>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  code: () => Promise<AsyncIterator<String>>;
   user: <T = UserSubscription>() => T;
   sentiment: () => Promise<AsyncIterator<String>>;
   rate: () => Promise<AsyncIterator<Int>>;
@@ -577,7 +559,6 @@ export interface MovieNullablePromise
   extends Promise<Movie | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  code: () => Promise<String>;
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
   rate: () => Promise<Int>;
@@ -589,6 +570,7 @@ export interface User {
   id: ID_Output;
   name: String;
   email: String;
+  loginSecret?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -606,6 +588,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -625,6 +608,7 @@ export interface UserSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -644,6 +628,7 @@ export interface UserNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  loginSecret: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -822,7 +807,6 @@ export interface MovieSubscriptionPayloadSubscription
 
 export interface MoviePreviousValues {
   id: ID_Output;
-  code: String;
   sentiment: String;
   rate: Int;
   createdAt: DateTimeOutput;
@@ -833,7 +817,6 @@ export interface MoviePreviousValuesPromise
   extends Promise<MoviePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  code: () => Promise<String>;
   sentiment: () => Promise<String>;
   rate: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -844,7 +827,6 @@ export interface MoviePreviousValuesSubscription
   extends Promise<AsyncIterator<MoviePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  code: () => Promise<AsyncIterator<String>>;
   sentiment: () => Promise<AsyncIterator<String>>;
   rate: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -880,6 +862,7 @@ export interface UserPreviousValues {
   id: ID_Output;
   name: String;
   email: String;
+  loginSecret?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -890,6 +873,7 @@ export interface UserPreviousValuesPromise
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
   email: () => Promise<String>;
+  loginSecret: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -900,6 +884,7 @@ export interface UserPreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
+  loginSecret: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }

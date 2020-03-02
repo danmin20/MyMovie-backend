@@ -3,13 +3,13 @@ type User {
   name: String!
   email: String! @unique
   movies: [Movie!]! @relation(name:"MoviesOfPost" onDelete: CASCADE)
+  loginSecret: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 
 type Movie {
   id: ID! @id
-  code: String!
   user: User! @relation(name: "MoviesOfPost")
   sentiment: String!
   rate: Int!

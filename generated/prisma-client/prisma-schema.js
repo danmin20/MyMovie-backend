@@ -21,7 +21,6 @@ scalar Long
 
 type Movie {
   id: ID!
-  code: String!
   user: User!
   sentiment: String!
   rate: Int!
@@ -37,7 +36,6 @@ type MovieConnection {
 
 input MovieCreateInput {
   id: ID
-  code: String!
   user: UserCreateOneWithoutMoviesInput!
   sentiment: String!
   rate: Int!
@@ -50,7 +48,6 @@ input MovieCreateManyWithoutUserInput {
 
 input MovieCreateWithoutUserInput {
   id: ID
-  code: String!
   sentiment: String!
   rate: Int!
 }
@@ -63,8 +60,6 @@ type MovieEdge {
 enum MovieOrderByInput {
   id_ASC
   id_DESC
-  code_ASC
-  code_DESC
   sentiment_ASC
   sentiment_DESC
   rate_ASC
@@ -77,7 +72,6 @@ enum MovieOrderByInput {
 
 type MoviePreviousValues {
   id: ID!
-  code: String!
   sentiment: String!
   rate: Int!
   createdAt: DateTime!
@@ -99,20 +93,6 @@ input MovieScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  code: String
-  code_not: String
-  code_in: [String!]
-  code_not_in: [String!]
-  code_lt: String
-  code_lte: String
-  code_gt: String
-  code_gte: String
-  code_contains: String
-  code_not_contains: String
-  code_starts_with: String
-  code_not_starts_with: String
-  code_ends_with: String
-  code_not_ends_with: String
   sentiment: String
   sentiment_not: String
   sentiment_in: [String!]
@@ -175,20 +155,17 @@ input MovieSubscriptionWhereInput {
 }
 
 input MovieUpdateInput {
-  code: String
   user: UserUpdateOneRequiredWithoutMoviesInput
   sentiment: String
   rate: Int
 }
 
 input MovieUpdateManyDataInput {
-  code: String
   sentiment: String
   rate: Int
 }
 
 input MovieUpdateManyMutationInput {
-  code: String
   sentiment: String
   rate: Int
 }
@@ -211,7 +188,6 @@ input MovieUpdateManyWithWhereNestedInput {
 }
 
 input MovieUpdateWithoutUserDataInput {
-  code: String
   sentiment: String
   rate: Int
 }
@@ -242,20 +218,6 @@ input MovieWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  code: String
-  code_not: String
-  code_in: [String!]
-  code_not_in: [String!]
-  code_lt: String
-  code_lte: String
-  code_gt: String
-  code_gte: String
-  code_contains: String
-  code_not_contains: String
-  code_starts_with: String
-  code_not_starts_with: String
-  code_ends_with: String
-  code_not_ends_with: String
   user: UserWhereInput
   sentiment: String
   sentiment_not: String
@@ -356,6 +318,7 @@ type User {
   name: String!
   email: String!
   movies(where: MovieWhereInput, orderBy: MovieOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Movie!]
+  loginSecret: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -371,6 +334,7 @@ input UserCreateInput {
   name: String!
   email: String!
   movies: MovieCreateManyWithoutUserInput
+  loginSecret: String
 }
 
 input UserCreateOneWithoutMoviesInput {
@@ -382,6 +346,7 @@ input UserCreateWithoutMoviesInput {
   id: ID
   name: String!
   email: String!
+  loginSecret: String
 }
 
 type UserEdge {
@@ -396,6 +361,8 @@ enum UserOrderByInput {
   name_DESC
   email_ASC
   email_DESC
+  loginSecret_ASC
+  loginSecret_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -406,6 +373,7 @@ type UserPreviousValues {
   id: ID!
   name: String!
   email: String!
+  loginSecret: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -432,11 +400,13 @@ input UserUpdateInput {
   name: String
   email: String
   movies: MovieUpdateManyWithoutUserInput
+  loginSecret: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
   email: String
+  loginSecret: String
 }
 
 input UserUpdateOneRequiredWithoutMoviesInput {
@@ -449,6 +419,7 @@ input UserUpdateOneRequiredWithoutMoviesInput {
 input UserUpdateWithoutMoviesDataInput {
   name: String
   email: String
+  loginSecret: String
 }
 
 input UserUpsertWithoutMoviesInput {
@@ -502,6 +473,20 @@ input UserWhereInput {
   movies_every: MovieWhereInput
   movies_some: MovieWhereInput
   movies_none: MovieWhereInput
+  loginSecret: String
+  loginSecret_not: String
+  loginSecret_in: [String!]
+  loginSecret_not_in: [String!]
+  loginSecret_lt: String
+  loginSecret_lte: String
+  loginSecret_gt: String
+  loginSecret_gte: String
+  loginSecret_contains: String
+  loginSecret_not_contains: String
+  loginSecret_starts_with: String
+  loginSecret_not_starts_with: String
+  loginSecret_ends_with: String
+  loginSecret_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
