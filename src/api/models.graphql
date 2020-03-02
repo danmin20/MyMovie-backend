@@ -14,7 +14,7 @@ type Movie {
   user: User!
   sentiment: String!
   img: String!
-  rate: Int!
+  rate: String!
   createdAt: String
   updatedAt: String
 }

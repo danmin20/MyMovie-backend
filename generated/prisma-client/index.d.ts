@@ -234,14 +234,20 @@ export interface MovieWhereInput {
   img_not_starts_with?: Maybe<String>;
   img_ends_with?: Maybe<String>;
   img_not_ends_with?: Maybe<String>;
-  rate?: Maybe<Int>;
-  rate_not?: Maybe<Int>;
-  rate_in?: Maybe<Int[] | Int>;
-  rate_not_in?: Maybe<Int[] | Int>;
-  rate_lt?: Maybe<Int>;
-  rate_lte?: Maybe<Int>;
-  rate_gt?: Maybe<Int>;
-  rate_gte?: Maybe<Int>;
+  rate?: Maybe<String>;
+  rate_not?: Maybe<String>;
+  rate_in?: Maybe<String[] | String>;
+  rate_not_in?: Maybe<String[] | String>;
+  rate_lt?: Maybe<String>;
+  rate_lte?: Maybe<String>;
+  rate_gt?: Maybe<String>;
+  rate_gte?: Maybe<String>;
+  rate_contains?: Maybe<String>;
+  rate_not_contains?: Maybe<String>;
+  rate_starts_with?: Maybe<String>;
+  rate_not_starts_with?: Maybe<String>;
+  rate_ends_with?: Maybe<String>;
+  rate_not_ends_with?: Maybe<String>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -355,7 +361,7 @@ export interface MovieCreateInput {
   user: UserCreateOneWithoutMoviesInput;
   sentiment: String;
   img: String;
-  rate: Int;
+  rate: String;
 }
 
 export interface UserCreateOneWithoutMoviesInput {
@@ -375,7 +381,7 @@ export interface MovieUpdateInput {
   user?: Maybe<UserUpdateOneRequiredWithoutMoviesInput>;
   sentiment?: Maybe<String>;
   img?: Maybe<String>;
-  rate?: Maybe<Int>;
+  rate?: Maybe<String>;
 }
 
 export interface UserUpdateOneRequiredWithoutMoviesInput {
@@ -400,7 +406,7 @@ export interface MovieUpdateManyMutationInput {
   movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
   img?: Maybe<String>;
-  rate?: Maybe<Int>;
+  rate?: Maybe<String>;
 }
 
 export interface UserCreateInput {
@@ -421,7 +427,7 @@ export interface MovieCreateWithoutUserInput {
   movieNm: String;
   sentiment: String;
   img: String;
-  rate: Int;
+  rate: String;
 }
 
 export interface UserUpdateInput {
@@ -460,7 +466,7 @@ export interface MovieUpdateWithoutUserDataInput {
   movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
   img?: Maybe<String>;
-  rate?: Maybe<Int>;
+  rate?: Maybe<String>;
 }
 
 export interface MovieUpsertWithWhereUniqueWithoutUserInput {
@@ -526,14 +532,20 @@ export interface MovieScalarWhereInput {
   img_not_starts_with?: Maybe<String>;
   img_ends_with?: Maybe<String>;
   img_not_ends_with?: Maybe<String>;
-  rate?: Maybe<Int>;
-  rate_not?: Maybe<Int>;
-  rate_in?: Maybe<Int[] | Int>;
-  rate_not_in?: Maybe<Int[] | Int>;
-  rate_lt?: Maybe<Int>;
-  rate_lte?: Maybe<Int>;
-  rate_gt?: Maybe<Int>;
-  rate_gte?: Maybe<Int>;
+  rate?: Maybe<String>;
+  rate_not?: Maybe<String>;
+  rate_in?: Maybe<String[] | String>;
+  rate_not_in?: Maybe<String[] | String>;
+  rate_lt?: Maybe<String>;
+  rate_lte?: Maybe<String>;
+  rate_gt?: Maybe<String>;
+  rate_gte?: Maybe<String>;
+  rate_contains?: Maybe<String>;
+  rate_not_contains?: Maybe<String>;
+  rate_starts_with?: Maybe<String>;
+  rate_not_starts_with?: Maybe<String>;
+  rate_ends_with?: Maybe<String>;
+  rate_not_ends_with?: Maybe<String>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -564,7 +576,7 @@ export interface MovieUpdateManyDataInput {
   movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
   img?: Maybe<String>;
-  rate?: Maybe<Int>;
+  rate?: Maybe<String>;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -604,7 +616,7 @@ export interface Movie {
   movieNm: String;
   sentiment: String;
   img: String;
-  rate: Int;
+  rate: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -615,7 +627,7 @@ export interface MoviePromise extends Promise<Movie>, Fragmentable {
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
   img: () => Promise<String>;
-  rate: () => Promise<Int>;
+  rate: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -628,7 +640,7 @@ export interface MovieSubscription
   user: <T = UserSubscription>() => T;
   sentiment: () => Promise<AsyncIterator<String>>;
   img: () => Promise<AsyncIterator<String>>;
-  rate: () => Promise<AsyncIterator<Int>>;
+  rate: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -641,7 +653,7 @@ export interface MovieNullablePromise
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
   img: () => Promise<String>;
-  rate: () => Promise<Int>;
+  rate: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -890,7 +902,7 @@ export interface MoviePreviousValues {
   movieNm: String;
   sentiment: String;
   img: String;
-  rate: Int;
+  rate: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -902,7 +914,7 @@ export interface MoviePreviousValuesPromise
   movieNm: () => Promise<String>;
   sentiment: () => Promise<String>;
   img: () => Promise<String>;
-  rate: () => Promise<Int>;
+  rate: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -914,7 +926,7 @@ export interface MoviePreviousValuesSubscription
   movieNm: () => Promise<AsyncIterator<String>>;
   sentiment: () => Promise<AsyncIterator<String>>;
   img: () => Promise<AsyncIterator<String>>;
-  rate: () => Promise<AsyncIterator<Int>>;
+  rate: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }

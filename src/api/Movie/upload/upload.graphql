@@ -1,3 +1,3 @@
 type Mutation {
-  upload(sentiment: String!, movieNm: String!, img: String!, rate: Int!): Movie!
+  upload(sentiment: String!, movieNm: String!, img: String!, rate: String!): Movie!
 }

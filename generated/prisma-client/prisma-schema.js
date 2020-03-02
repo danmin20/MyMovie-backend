@@ -25,7 +25,7 @@ type Movie {
   user: User!
   sentiment: String!
   img: String!
-  rate: Int!
+  rate: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -42,7 +42,7 @@ input MovieCreateInput {
   user: UserCreateOneWithoutMoviesInput!
   sentiment: String!
   img: String!
-  rate: Int!
+  rate: String!
 }
 
 input MovieCreateManyWithoutUserInput {
@@ -55,7 +55,7 @@ input MovieCreateWithoutUserInput {
   movieNm: String!
   sentiment: String!
   img: String!
-  rate: Int!
+  rate: String!
 }
 
 type MovieEdge {
@@ -85,7 +85,7 @@ type MoviePreviousValues {
   movieNm: String!
   sentiment: String!
   img: String!
-  rate: Int!
+  rate: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -147,14 +147,20 @@ input MovieScalarWhereInput {
   img_not_starts_with: String
   img_ends_with: String
   img_not_ends_with: String
-  rate: Int
-  rate_not: Int
-  rate_in: [Int!]
-  rate_not_in: [Int!]
-  rate_lt: Int
-  rate_lte: Int
-  rate_gt: Int
-  rate_gte: Int
+  rate: String
+  rate_not: String
+  rate_in: [String!]
+  rate_not_in: [String!]
+  rate_lt: String
+  rate_lte: String
+  rate_gt: String
+  rate_gte: String
+  rate_contains: String
+  rate_not_contains: String
+  rate_starts_with: String
+  rate_not_starts_with: String
+  rate_ends_with: String
+  rate_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -199,21 +205,21 @@ input MovieUpdateInput {
   user: UserUpdateOneRequiredWithoutMoviesInput
   sentiment: String
   img: String
-  rate: Int
+  rate: String
 }
 
 input MovieUpdateManyDataInput {
   movieNm: String
   sentiment: String
   img: String
-  rate: Int
+  rate: String
 }
 
 input MovieUpdateManyMutationInput {
   movieNm: String
   sentiment: String
   img: String
-  rate: Int
+  rate: String
 }
 
 input MovieUpdateManyWithoutUserInput {
@@ -237,7 +243,7 @@ input MovieUpdateWithoutUserDataInput {
   movieNm: String
   sentiment: String
   img: String
-  rate: Int
+  rate: String
 }
 
 input MovieUpdateWithWhereUniqueWithoutUserInput {
@@ -309,14 +315,20 @@ input MovieWhereInput {
   img_not_starts_with: String
   img_ends_with: String
   img_not_ends_with: String
-  rate: Int
-  rate_not: Int
-  rate_in: [Int!]
-  rate_not_in: [Int!]
-  rate_lt: Int
-  rate_lte: Int
-  rate_gt: Int
-  rate_gte: Int
+  rate: String
+  rate_not: String
+  rate_in: [String!]
+  rate_not_in: [String!]
+  rate_lt: String
+  rate_lte: String
+  rate_gt: String
+  rate_gte: String
+  rate_contains: String
+  rate_not_contains: String
+  rate_starts_with: String
+  rate_not_starts_with: String
+  rate_ends_with: String
+  rate_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
