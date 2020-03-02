@@ -21,8 +21,10 @@ scalar Long
 
 type Movie {
   id: ID!
+  movieNm: String!
   user: User!
   sentiment: String!
+  img: String!
   rate: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -36,8 +38,10 @@ type MovieConnection {
 
 input MovieCreateInput {
   id: ID
+  movieNm: String!
   user: UserCreateOneWithoutMoviesInput!
   sentiment: String!
+  img: String!
   rate: Int!
 }
 
@@ -48,7 +52,9 @@ input MovieCreateManyWithoutUserInput {
 
 input MovieCreateWithoutUserInput {
   id: ID
+  movieNm: String!
   sentiment: String!
+  img: String!
   rate: Int!
 }
 
@@ -60,8 +66,12 @@ type MovieEdge {
 enum MovieOrderByInput {
   id_ASC
   id_DESC
+  movieNm_ASC
+  movieNm_DESC
   sentiment_ASC
   sentiment_DESC
+  img_ASC
+  img_DESC
   rate_ASC
   rate_DESC
   createdAt_ASC
@@ -72,7 +82,9 @@ enum MovieOrderByInput {
 
 type MoviePreviousValues {
   id: ID!
+  movieNm: String!
   sentiment: String!
+  img: String!
   rate: Int!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -93,6 +105,20 @@ input MovieScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  movieNm: String
+  movieNm_not: String
+  movieNm_in: [String!]
+  movieNm_not_in: [String!]
+  movieNm_lt: String
+  movieNm_lte: String
+  movieNm_gt: String
+  movieNm_gte: String
+  movieNm_contains: String
+  movieNm_not_contains: String
+  movieNm_starts_with: String
+  movieNm_not_starts_with: String
+  movieNm_ends_with: String
+  movieNm_not_ends_with: String
   sentiment: String
   sentiment_not: String
   sentiment_in: [String!]
@@ -107,6 +133,20 @@ input MovieScalarWhereInput {
   sentiment_not_starts_with: String
   sentiment_ends_with: String
   sentiment_not_ends_with: String
+  img: String
+  img_not: String
+  img_in: [String!]
+  img_not_in: [String!]
+  img_lt: String
+  img_lte: String
+  img_gt: String
+  img_gte: String
+  img_contains: String
+  img_not_contains: String
+  img_starts_with: String
+  img_not_starts_with: String
+  img_ends_with: String
+  img_not_ends_with: String
   rate: Int
   rate_not: Int
   rate_in: [Int!]
@@ -155,18 +195,24 @@ input MovieSubscriptionWhereInput {
 }
 
 input MovieUpdateInput {
+  movieNm: String
   user: UserUpdateOneRequiredWithoutMoviesInput
   sentiment: String
+  img: String
   rate: Int
 }
 
 input MovieUpdateManyDataInput {
+  movieNm: String
   sentiment: String
+  img: String
   rate: Int
 }
 
 input MovieUpdateManyMutationInput {
+  movieNm: String
   sentiment: String
+  img: String
   rate: Int
 }
 
@@ -188,7 +234,9 @@ input MovieUpdateManyWithWhereNestedInput {
 }
 
 input MovieUpdateWithoutUserDataInput {
+  movieNm: String
   sentiment: String
+  img: String
   rate: Int
 }
 
@@ -218,6 +266,20 @@ input MovieWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  movieNm: String
+  movieNm_not: String
+  movieNm_in: [String!]
+  movieNm_not_in: [String!]
+  movieNm_lt: String
+  movieNm_lte: String
+  movieNm_gt: String
+  movieNm_gte: String
+  movieNm_contains: String
+  movieNm_not_contains: String
+  movieNm_starts_with: String
+  movieNm_not_starts_with: String
+  movieNm_ends_with: String
+  movieNm_not_ends_with: String
   user: UserWhereInput
   sentiment: String
   sentiment_not: String
@@ -233,6 +295,20 @@ input MovieWhereInput {
   sentiment_not_starts_with: String
   sentiment_ends_with: String
   sentiment_not_ends_with: String
+  img: String
+  img_not: String
+  img_in: [String!]
+  img_not_in: [String!]
+  img_lt: String
+  img_lte: String
+  img_gt: String
+  img_gte: String
+  img_contains: String
+  img_not_contains: String
+  img_starts_with: String
+  img_not_starts_with: String
+  img_ends_with: String
+  img_not_ends_with: String
   rate: Int
   rate_not: Int
   rate_in: [Int!]

@@ -2,7 +2,7 @@ type User {
   id: ID! @id
   name: String!
   email: String! @unique
-  movies: [Movie!]! @relation(name:"MoviesOfPost" onDelete: CASCADE)
+  movies: [Movie!]! @relation(name:"MoviesOfUser" onDelete: CASCADE)
   loginSecret: String
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
@@ -10,8 +10,10 @@ type User {
 
 type Movie {
   id: ID! @id
-  user: User! @relation(name: "MoviesOfPost")
+  movieNm: String!
+  user: User! @relation(name: "MoviesOfUser")
   sentiment: String!
+  img: String!
   rate: Int!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt

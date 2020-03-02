@@ -143,8 +143,12 @@ export interface ClientConstructor<T> {
 export type MovieOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "movieNm_ASC"
+  | "movieNm_DESC"
   | "sentiment_ASC"
   | "sentiment_DESC"
+  | "img_ASC"
+  | "img_DESC"
   | "rate_ASC"
   | "rate_DESC"
   | "createdAt_ASC"
@@ -187,6 +191,20 @@ export interface MovieWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  movieNm?: Maybe<String>;
+  movieNm_not?: Maybe<String>;
+  movieNm_in?: Maybe<String[] | String>;
+  movieNm_not_in?: Maybe<String[] | String>;
+  movieNm_lt?: Maybe<String>;
+  movieNm_lte?: Maybe<String>;
+  movieNm_gt?: Maybe<String>;
+  movieNm_gte?: Maybe<String>;
+  movieNm_contains?: Maybe<String>;
+  movieNm_not_contains?: Maybe<String>;
+  movieNm_starts_with?: Maybe<String>;
+  movieNm_not_starts_with?: Maybe<String>;
+  movieNm_ends_with?: Maybe<String>;
+  movieNm_not_ends_with?: Maybe<String>;
   user?: Maybe<UserWhereInput>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
@@ -202,6 +220,20 @@ export interface MovieWhereInput {
   sentiment_not_starts_with?: Maybe<String>;
   sentiment_ends_with?: Maybe<String>;
   sentiment_not_ends_with?: Maybe<String>;
+  img?: Maybe<String>;
+  img_not?: Maybe<String>;
+  img_in?: Maybe<String[] | String>;
+  img_not_in?: Maybe<String[] | String>;
+  img_lt?: Maybe<String>;
+  img_lte?: Maybe<String>;
+  img_gt?: Maybe<String>;
+  img_gte?: Maybe<String>;
+  img_contains?: Maybe<String>;
+  img_not_contains?: Maybe<String>;
+  img_starts_with?: Maybe<String>;
+  img_not_starts_with?: Maybe<String>;
+  img_ends_with?: Maybe<String>;
+  img_not_ends_with?: Maybe<String>;
   rate?: Maybe<Int>;
   rate_not?: Maybe<Int>;
   rate_in?: Maybe<Int[] | Int>;
@@ -319,8 +351,10 @@ export type UserWhereUniqueInput = AtLeastOne<{
 
 export interface MovieCreateInput {
   id?: Maybe<ID_Input>;
+  movieNm: String;
   user: UserCreateOneWithoutMoviesInput;
   sentiment: String;
+  img: String;
   rate: Int;
 }
 
@@ -337,8 +371,10 @@ export interface UserCreateWithoutMoviesInput {
 }
 
 export interface MovieUpdateInput {
+  movieNm?: Maybe<String>;
   user?: Maybe<UserUpdateOneRequiredWithoutMoviesInput>;
   sentiment?: Maybe<String>;
+  img?: Maybe<String>;
   rate?: Maybe<Int>;
 }
 
@@ -361,7 +397,9 @@ export interface UserUpsertWithoutMoviesInput {
 }
 
 export interface MovieUpdateManyMutationInput {
+  movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
+  img?: Maybe<String>;
   rate?: Maybe<Int>;
 }
 
@@ -380,7 +418,9 @@ export interface MovieCreateManyWithoutUserInput {
 
 export interface MovieCreateWithoutUserInput {
   id?: Maybe<ID_Input>;
+  movieNm: String;
   sentiment: String;
+  img: String;
   rate: Int;
 }
 
@@ -417,7 +457,9 @@ export interface MovieUpdateWithWhereUniqueWithoutUserInput {
 }
 
 export interface MovieUpdateWithoutUserDataInput {
+  movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
+  img?: Maybe<String>;
   rate?: Maybe<Int>;
 }
 
@@ -442,6 +484,20 @@ export interface MovieScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  movieNm?: Maybe<String>;
+  movieNm_not?: Maybe<String>;
+  movieNm_in?: Maybe<String[] | String>;
+  movieNm_not_in?: Maybe<String[] | String>;
+  movieNm_lt?: Maybe<String>;
+  movieNm_lte?: Maybe<String>;
+  movieNm_gt?: Maybe<String>;
+  movieNm_gte?: Maybe<String>;
+  movieNm_contains?: Maybe<String>;
+  movieNm_not_contains?: Maybe<String>;
+  movieNm_starts_with?: Maybe<String>;
+  movieNm_not_starts_with?: Maybe<String>;
+  movieNm_ends_with?: Maybe<String>;
+  movieNm_not_ends_with?: Maybe<String>;
   sentiment?: Maybe<String>;
   sentiment_not?: Maybe<String>;
   sentiment_in?: Maybe<String[] | String>;
@@ -456,6 +512,20 @@ export interface MovieScalarWhereInput {
   sentiment_not_starts_with?: Maybe<String>;
   sentiment_ends_with?: Maybe<String>;
   sentiment_not_ends_with?: Maybe<String>;
+  img?: Maybe<String>;
+  img_not?: Maybe<String>;
+  img_in?: Maybe<String[] | String>;
+  img_not_in?: Maybe<String[] | String>;
+  img_lt?: Maybe<String>;
+  img_lte?: Maybe<String>;
+  img_gt?: Maybe<String>;
+  img_gte?: Maybe<String>;
+  img_contains?: Maybe<String>;
+  img_not_contains?: Maybe<String>;
+  img_starts_with?: Maybe<String>;
+  img_not_starts_with?: Maybe<String>;
+  img_ends_with?: Maybe<String>;
+  img_not_ends_with?: Maybe<String>;
   rate?: Maybe<Int>;
   rate_not?: Maybe<Int>;
   rate_in?: Maybe<Int[] | Int>;
@@ -491,7 +561,9 @@ export interface MovieUpdateManyWithWhereNestedInput {
 }
 
 export interface MovieUpdateManyDataInput {
+  movieNm?: Maybe<String>;
   sentiment?: Maybe<String>;
+  img?: Maybe<String>;
   rate?: Maybe<Int>;
 }
 
@@ -529,7 +601,9 @@ export interface NodeNode {
 
 export interface Movie {
   id: ID_Output;
+  movieNm: String;
   sentiment: String;
+  img: String;
   rate: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -537,8 +611,10 @@ export interface Movie {
 
 export interface MoviePromise extends Promise<Movie>, Fragmentable {
   id: () => Promise<ID_Output>;
+  movieNm: () => Promise<String>;
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
+  img: () => Promise<String>;
   rate: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -548,8 +624,10 @@ export interface MovieSubscription
   extends Promise<AsyncIterator<Movie>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  movieNm: () => Promise<AsyncIterator<String>>;
   user: <T = UserSubscription>() => T;
   sentiment: () => Promise<AsyncIterator<String>>;
+  img: () => Promise<AsyncIterator<String>>;
   rate: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -559,8 +637,10 @@ export interface MovieNullablePromise
   extends Promise<Movie | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  movieNm: () => Promise<String>;
   user: <T = UserPromise>() => T;
   sentiment: () => Promise<String>;
+  img: () => Promise<String>;
   rate: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -807,7 +887,9 @@ export interface MovieSubscriptionPayloadSubscription
 
 export interface MoviePreviousValues {
   id: ID_Output;
+  movieNm: String;
   sentiment: String;
+  img: String;
   rate: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
@@ -817,7 +899,9 @@ export interface MoviePreviousValuesPromise
   extends Promise<MoviePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  movieNm: () => Promise<String>;
   sentiment: () => Promise<String>;
+  img: () => Promise<String>;
   rate: () => Promise<Int>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
@@ -827,7 +911,9 @@ export interface MoviePreviousValuesSubscription
   extends Promise<AsyncIterator<MoviePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  movieNm: () => Promise<AsyncIterator<String>>;
   sentiment: () => Promise<AsyncIterator<String>>;
+  img: () => Promise<AsyncIterator<String>>;
   rate: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;

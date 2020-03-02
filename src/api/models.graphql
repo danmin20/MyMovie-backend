@@ -10,8 +10,10 @@ type User {
 
 type Movie {
   id: ID!
+  movieNm: String!
   user: User!
   sentiment: String!
+  img: String!
   rate: Int!
   createdAt: String
   updatedAt: String
