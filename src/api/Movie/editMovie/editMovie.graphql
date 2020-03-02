@@ -1,0 +1,13 @@
+enum ACTION {
+  EDIT
+  DELETE
+}
+
+type Mutation {
+  editMovie(
+    id: String!
+    sentiment: String
+    rate: String
+    action: ACTION!
+  ): Movie!
+}
