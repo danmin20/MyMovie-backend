@@ -1,0 +1,131 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  movies: [Movie!]!
+  loginSecret: String
+  createdAt: String
+  updatedAt: String
+}
+
+type Movie {
+  id: ID!
+  movieNm: String!
+  user: User!
+  sentiment: String!
+  img: String!
+  rate: String!
+  createdAt: String
+  updatedAt: String
+}
+
+type MovieList {
+  movieCd: String!
+  movieNm: String
+  movieNmEn: String
+  prdtYear: String
+  openDt: String
+  typeNm: String
+  prdtStatNm: String
+  nationAlt: String
+  genreAlt: String
+  repNationNm: String
+  repGenreNm: String
+  directors: [Director]
+  companys: [Company]
+}
+
+type MovieDetail {
+  movieCd: String!
+  movieNm: String
+  movieNmEn: String
+  movieNmOg: String
+  prdtYear: String
+  openDt: String
+  showTm: String
+  typeNm: String
+  prdtStatNm: String
+  nations: [Nation]
+  genres: [Genre]
+  directors: [Director]
+  companys: [Company]
+  actors: [Actor]
+  showTypes: [ShowType]
+  audits: [Audit]
+  staffs: [Staff]
+}
+
+type Director {
+  peopleNm: String
+  peopleNmEn: String
+}
+
+type Actor {
+  peopleNm: String
+  cast: String
+  peopleNmEn: String
+}
+
+type Staff {
+  peopleNm: String
+  peopleNmEn: String
+  staffRoleNm: String
+}
+
+type Genre {
+  genreNm: String
+}
+
+type ShowType {
+  showTypeGroupNm: String
+  showTypeNm: String
+}
+
+type Audit {
+  auditNo: String
+  watchGradeNm: String
+}
+
+type Company {
+  companyCd: String
+  companyNm: String
+  companyNmEn: String
+  companyPartNm: String
+}
+
+type Nation {
+  nationNm: String
+}
+
+type Boxoffice {
+  boxofficeType: String
+  showRange: String
+  rnum: String
+  rank: String
+  rankIntent: String
+  rankOldAndNew: String
+  movieCd: String
+  movieNm: String
+  openDt: String
+  salesAmt: String
+  salesShare: String
+  salesIntent: String
+  salesChange: String
+  salesAcc: String
+  audiCnt: String
+  audiIntent: String
+  audiChange: String
+  audiAcc: String
+  scrnCnt: String
+  showCnt: String
+}
+
+type NaverMovie {
+  title: String
+  link: String
+  image: String
+  pudDate: String
+  director: String
+  actor: String
+  userRating: String
+}
