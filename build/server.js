@@ -1,6 +1,10 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 require("./env");
+
+require("@babel/polyfill");
 
 var _graphqlYoga = require("graphql-yoga");
 
@@ -11,8 +15,6 @@ var _schema = _interopRequireDefault(require("./schema"));
 var _passport = require("./passport");
 
 var _middleware = require("./middleware");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var PORT = process.env.PORT || 4000;
 var server = new _graphqlYoga.GraphQLServer({
